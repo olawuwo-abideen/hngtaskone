@@ -1,22 +1,6 @@
 const express = require('express');
 const app = express();
 const { DateTime } = require('luxon');
-// Create a new Date object for the current UTC time
-const currentUTCDate = new Date();
-
-// Format the date as a string in UTC format ('YYYY-MM-DDTHH:MM:SSZ')
-const options = { 
-  year: 'numeric', 
-  month: '2-digit', 
-  day: '2-digit', 
-  hour: '2-digit', 
-  minute: '2-digit', 
-  second: '2-digit', 
-  timeZoneName: 'short' 
-};
-const utcTimeStr = new Intl.DateTimeFormat('en-US', options).format(currentUTCDate);
-
-console.log("UTC Time:", utcTimeStr);
 
 
 const GITHUB_REPO_URL = 'https://github.com/olawuwo-abideen/hngtaskone';
@@ -29,10 +13,7 @@ app.get('/api', (req, res) => {
   const response = {
     slack_name: slackName,
     current_day: now.toFormat('cccc'),
-    utc_time: utcTimeStr,
-    //new Date().toUTCString(),
-      //Math.floor((new Date()).getTime() / 1000)
-    // utc_time: now.toUTC().toISO(),
+    utc_time: now.toUTC().toISO(),
     track: track,
     github_file_url: 'https://github.com/olawuwo-abideen/hngtaskone/blob/main/app.js',
     github_repo_url: GITHUB_REPO_URL,
