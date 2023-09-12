@@ -12,7 +12,8 @@ app.get('/api', (req, res) => {
   const response = {
     slack_name: slackName,
     current_day: now.toFormat('cccc'),
-    utc_time: Math.floor((new Date()).getTime() / 1000)
+    utc_time: new Date().toUTCString();
+      //Math.floor((new Date()).getTime() / 1000)
     // utc_time: now.toUTC().toISO(),
     track: track,
     github_file_url: 'https://github.com/olawuwo-abideen/hngtaskone/blob/main/app.js',
