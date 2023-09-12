@@ -12,7 +12,7 @@ app.get('/api', (req, res) => {
   const response = {
     slack_name: slackName,
     current_day: now.toFormat('cccc'),
-    utc_time: new Date().toUTCString();
+    utc_time: new Date().toUTCString(),
       //Math.floor((new Date()).getTime() / 1000)
     // utc_time: now.toUTC().toISO(),
     track: track,
